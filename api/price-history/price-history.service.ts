@@ -8,6 +8,7 @@ import { findManyPrices } from './dto/find-many-prices.dto';
 import { EVENT_TTL } from 'const/const';
 import { PriceHistoryGateway } from './websockets/websocket.gateway';
 import { EventDrinksPairsService } from 'event-drinks-pairs/event-drinks-pairs.service';
+import { ProducerService } from 'src/kafka/producer.service';
 
 @Injectable()
 export class PriceHistoryService {
@@ -20,6 +21,7 @@ export class PriceHistoryService {
     private eventRepository: Repository<Event>,
     private priceHistoryGateway: PriceHistoryGateway,
     private eventsDrinksPairService : EventDrinksPairsService,
+    // private kafkaService: KafkaService,
   ) {}
 
   async buy(id : number, @Body() body: any) {
